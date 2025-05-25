@@ -121,15 +121,10 @@ body{
  text-align: center;
  color:#0c6b17;
 }
-form{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  margin-top:1rem;
-}
-form input{
+
+button{
   width: 90%;
+  margin: 1rem auto;
   padding: .75rem;
   color: aliceblue;
   background-color: #16ca2b;
