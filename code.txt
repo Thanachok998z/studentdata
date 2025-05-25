@@ -1,0 +1,80 @@
+status
+<div class="status">
+   <h1>สถานะการดำเนินงาน</h1>
+   <div class="in-status">
+    <div class="bar">
+     <div class="inside-bar">
+      </div>
+    </div>
+   <div class="statusbox stb1">
+    <i class="fa-solid fa-file-invoice"></i>
+    <h5>ส่งคำร้อง</h5>
+   </div>
+   <div class="statusbox stb2">
+    <i class="fa-solid fa-image"></i>
+    <h5>ส่งรูปภาพ</h5>
+   </div>
+   <div class="statusbox stb3">
+    <i class="fa-solid fa-print"></i>
+    <h5>พิมพ์เอกสาร</h5>
+   </div>
+   <div class="statusbox stb4">
+    <i class="fa-solid fa-pen-fancy"></i>
+    <h5>รอเซ็นรับรอง</h5>
+   </div>
+   <div class="statusbox stb5">
+    <i class="fa-solid fa-check"></i>
+    <h5>เสร็จสิ้น</h5>
+   </div>
+   </div>
+   <h2>ขั้นตอนการส่งคำร้อง</h2>
+  </div>
+
+
+  /*status*/
+.status{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0rem auto;
+}
+.in-status{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.statusbox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: .3rem;
+  width: 20%;
+}
+.statusbox i{
+  font-size: 1.4rem;
+  background-color: #d9d7d6;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20rem;
+  margin-top: .3rem;
+  color: #afaeae;
+
+}
+.statusbox h5{
+  display: none;
+}
+
+.stb1 i{
+  background-color: #06407a;
+  color: #ffffff;
+} 
+.status h2{
+  color: #06407a;
+}

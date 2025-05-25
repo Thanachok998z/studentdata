@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped&display=swap');
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+ font-family: "Noto Sans Thai Looped", sans-serif;
+}
+.noto-sans-thai-looped-regular {
+  
+  font-weight: 400;
+  font-style: normal;
+}
+body{
+ background-color: aliceblue;
+}
+.topic-head{
+  width: 100vw;
+  background: linear-gradient(163deg,rgb(243, 148, 14) 0%, rgb(250, 105, 1) 28%, rgb(166, 64, 17) 100%);
+  padding: .5rem ;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+.head-top{
+  display: flex;
+  align-items: center;
+}
+.head-top-img{
+  width: 20%;
+  display: flex;
+  margin-top:20px;
+  margin: 1rem;
+  border-radius: 10rem;
+}
+.head-top-img img{
+  width: 90%;
+  border-radius: 90px;
+  padding: .4rem;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 4px 1px #de4f08;
+}
+.head-top-text{
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}
+.head-top-text h2{
+  font-size: 1.3rem;
+}
+.head-top-text h3{
+  font-size: 1.0rem;
+}
+.student-card{
+  display: flex;
+  background-color: rgb(255, 230, 219);
+  border-radius: 20rem;
+  padding: .3rem;
+  width: 93%;
+  margin:  0 auto;
+}
+.student-img{
+  width: 17%;
+  display: flex;
+  
+}
+.student-img img{
+  width: 100%;
+  border-radius: 10rem;
+}
+.student-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left:1rem;
+}
+.student-text h2{
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgb(42, 43, 43);
+}
+.student-text h3{
+  font-size: 1.0rem;
+  color: #61605f;
+  font-weight: 500;
+}
+
+
+/*Section*/
+.request{
+  background-color: aliceblue;
+  margin-top: -1rem;
+  border-radius: 1.25rem 1.25rem 0 0;
+  height: 10rem;
+  padding: 1rem;
+}
+.printing{
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+.print-top{
+ text-align: center;
+}
+.print-mid{
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ margin: 1rem 0;
+ padding: 1rem;
+}
+.print-mid i{
+ font-size:5rem;
+}
+.print-bottom{
+ display:flex;
+ justify-content:center;
+}
+.print-bottom h3{
+ text-align: center;
+}

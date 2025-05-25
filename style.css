@@ -12,7 +12,8 @@
 }
 
 body{
- background: linear-gradient(163deg,rgba(68, 187, 235, 1) 0%, rgba(43, 88, 224, 1) 28%, rgba(240, 118, 62, 1) 100%);
+  background: linear-gradient(163deg,rgb(243, 148, 14) 0%, rgb(250, 105, 1) 28%, rgb(166, 64, 17) 100%);
+
 }
 #login-page{
  display: flex;
