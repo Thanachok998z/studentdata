@@ -1,10 +1,14 @@
+<?php 
+session_start();
+include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>ร้องข้อ</title>
- <link rel="stylesheet" href="home.css">
+ <title>printing</title>
+ <link rel="stylesheet" href="waitaccept.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -23,30 +27,25 @@
     <div class="student-img">
      <img src="img/boy.png" alt="">
     </div>
-    <div class="student-text">
-     <h2>นายสมชาย ใจดี</h2>
-     <h3>ชั้น: ม.6/1 รหัสนักเรียน: 12345</h3>
+   <div class="student-text">
+     <h2><?php echo $_SESSION['name']; ?></h2>
+     <h3>ชั้น: ม.<?php echo $_SESSION['grade']; ?> รหัสนักเรียน: <?php echo $_SESSION['studentid']; ?></h3>
     </div>
    </div>
   </div>
  </div>
  <section class="request">
-  
-
-
-  <form action="">
-   <h3>แบบคำร้องขอเอกสาร</h3>
-   <h2>กรุณาเลือกเอกสารที่ท่านต้องการ</h2>
-   <label for="" class="checkbox">
-    <h1>ปพ.1</h1>
-    <input type="checkbox" name="document" id="PP1">
-   </label>
-   <label for="" class="checkbox">
-    <h1>ปพ.7</h1>
-    <input type="checkbox" name="document" id="PP7">
-   </label>
-   <input type="submit" value="ส่งคำร้อง">
-  </form>
+  <div class="printing">
+   <div class="print-top">
+    <h1>รอนายทะเบียนรับเรื่อง</h1>
+   </div>
+   <div class="print-mid">
+    <i class="fa-solid fa-clock"></i>
+   </div>
+   <div class="print-bottom">
+    <h3>คำร้องขอของคุณถูกส่งเรียบร้อย<br>โปรดรอนายทะเบียนรับเรื่อง</h3>
+   </div>
+  </div>
  </section>
 </body>
 </html>

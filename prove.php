@@ -1,10 +1,14 @@
+<?php 
+session_start();
+include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>printing</title>
- <link rel="stylesheet" href="fail.css">
+ <link rel="stylesheet" href="prove.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -24,8 +28,8 @@
      <img src="img/boy.png" alt="">
     </div>
     <div class="student-text">
-     <h2>นายสมชาย ใจดี</h2>
-     <h3>ชั้น: ม.6/1 รหัสนักเรียน: 12345</h3>
+     <h2><?php echo $_SESSION['name']; ?></h2>
+     <h3>ชั้น: ม.<?php echo $_SESSION['grade']; ?> รหัสนักเรียน: <?php echo $_SESSION['studentid']; ?></h3>
     </div>
    </div>
   </div>
@@ -33,13 +37,13 @@
  <section class="request">
   <div class="printing">
    <div class="print-top">
-    <h1>เอกสารของคุณมีปัญหา</h1>
+    <h1>รอเซ็นรับรองเอกสาร</h1>
    </div>
    <div class="print-mid">
-    <i class="fa-solid fa-circle-exclamation"></i>
+    <i class="fa-solid fa-pen-fancy"></i>
    </div>
    <div class="print-bottom">
-    <h3>เอกสารของคุณมีปัญหา<br>โปรดติดต่อห้องวิชาการ</h3>
+    <h3>เอกสารของคุณถูกเตรียมเสร็จสิ้น<br>โปรดรอท่านผู้อำนวยการเซ็นรับรอง</h3>
    </div>
   </div>
  </section>
