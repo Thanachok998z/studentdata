@@ -1,7 +1,21 @@
-
 <?php 
 session_start();
 include "connect.php";
+
+$showSuccess = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['confirm']) && $_POST['confirm'] === 'yes') {
+        // อัปเดตฐานข้อมูล
+        $sql = "UPDATE studentandteacherdata SET st_status = st_status + 1 WHERE st_id = '".$_SESSION['studentid']."'";
+
+        if ($conn->query($sql)) {
+            $showSuccess = true; // ให้ SweetAlert ไปแสดงหลังจากโหลดหน้า
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,69 +26,6 @@ include "connect.php";
  <link rel="stylesheet" href="dropphoto.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- <?php
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // ตรวจสอบว่ามีการยืนยันจาก SweetAlert หรือยัง
-    if (isset($_POST['confirm']) && $_POST['confirm'] === 'yes') {
-        // อัพเดตฐานข้อมูลจริง
-        $sql = "UPDATE studentandteacherdata SET st_status = st_status+1 WHERE st_id = '".$_SESSION['studentid']."'";
-        if ($conn->query($sql) === TRUE) {
-            // อัพเดตสำเร็จ แสดงแจ้งเตือน success หรือ redirect
-            echo '
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-                Swal.fire({
-                    icon: "success",
-                    title: "อัพเดตข้อมูลเรียบร้อยแล้ว",
-                    confirmButtonText: "ตกลง"
-                }).then(() => {
-                    window.location.href = "print.php";
-                });
-            </script>
-            ';
-        } else {
-            echo "Error updating record: " . $conn->error;
-        }
-    } else {
-        // ยังไม่มี confirm ให้แสดง SweetAlert confirm
-        echo '
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    title: "ยืนยันการส่งข้อมูล?",
-                    text: "คุณส่งรูปภาพ ณ ห้องวิชาการ และทำตามขั้นตอนถูกต้องใช่หรือไม่",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonText: "ใช่",
-                    cancelButtonText: "ยกเลิก"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        // ส่งแบบ POST พร้อม confirm=yes
-                        const form = document.createElement("form");
-                        form.method = "POST";
-                        form.style.display = "none";
-
-                        const inputConfirm = document.createElement("input");
-                        inputConfirm.name = "confirm";
-                        inputConfirm.value = "yes";
-                        form.appendChild(inputConfirm);
-
-                        document.body.appendChild(form);
-                        form.submit();
-                    } else {
-                        console.log("ผู้ใช้ยกเลิก");
-                    }
-                });
-            });
-        </script>
-        ';
-    }
-}
-?>
-
-
 </head>
 <body>
  <div class="topic-head">
@@ -131,5 +82,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    <input type="submit" value="ส่งรูปภาพเสร็จสิ้น">
   </form>
  </section>
+ <?php if ($_SERVER['REQUEST_METHOD'] !== 'POST') : ?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    Swal.fire({
+        title: "ยืนยันการส่งข้อมูล?",
+        text: "คุณส่งรูปภาพ ณ ห้องวิชาการ และทำตามขั้นตอนถูกต้องใช่หรือไม่",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "ใช่",
+        cancelButtonText: "ยกเลิก"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.style.display = "none";
+
+            const input = document.createElement("input");
+            input.name = "confirm";
+            input.value = "yes";
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+});
+</script>
+<?php endif; ?>
+
+<?php if ($showSuccess): ?>
+<script>
+Swal.fire({
+    icon: "success",
+    title: "อัพเดตข้อมูลเรียบร้อยแล้ว",
+    confirmButtonText: "ตกลง"
+}).then(() => {
+    window.location.href = "print.php";
+});
+</script>
+<?php endif; ?>
 </body>
 </html>
